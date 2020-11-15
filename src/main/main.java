@@ -12,6 +12,7 @@ public class main {
         int s[][]=new int[n][5];
         s= topic.generate(n);
         xFrame jf=new xFrame(n,s);
+
     }
     public static void Start(int n){
         int s[][]=new int[n][5];
