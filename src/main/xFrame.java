@@ -59,7 +59,6 @@ public class xFrame extends JFrame {
         setVisible(true);
         CountLable(a,n);
     }
-
     public static void CountLable(int a[][],int n) {
         for (int i = 0; i < n; i++) {
             JLabel label = new JLabel();
