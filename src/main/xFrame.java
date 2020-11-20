@@ -48,12 +48,9 @@ public class xFrame extends JFrame {
         Buttonpanel.add(Printfbutton);
         Buttonpanel.add(CountLable);
 
-        //为计数面板添加标签和文本框
-        //CountLable();
-
-        //设置窗体属性
         setLayout(new BorderLayout());
         setSize(800, 500);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Container container = getContentPane();
         //将计数面板,按钮面板放置在容器中指定位置
@@ -78,6 +75,10 @@ public class xFrame extends JFrame {
             JLabel st=new JLabel();
             st.setPreferredSize(new Dimension(50, 20));
             list2.add(st);
+        }
+        for(int i=0;i<n;i++){
+            Integer o=new Integer(0);
+            userlist.add(o);
         }
         for (int i = 1; i <= n; i++) {//利用if-else语句来间隔输出标签和文本框
                 Countpanel.add(list.get(j));
@@ -141,9 +142,10 @@ public class xFrame extends JFrame {
                 Double result;
                 num = 0;
                 //获取用户在文本框中输入的计算结果
-                for(int i = 0;i<list1.size();i++){//list为用户输入计算结果的文本框集合
-                    //Integer.parseInt()方法用于将字符串转换成数字
-                    userlist.add(Integer.valueOf(list1.get(i).getText()));
+                int pl=0;
+                for(Integer in:userlist){//list1为用户输入计算结果的文本框集合
+                    in=Integer.valueOf(list1.get(pl).getText());
+                    pl++;
                 }
                 //计算用户做对的题目个数
                 int h[][];
@@ -153,6 +155,7 @@ public class xFrame extends JFrame {
                     if(h[i][4]==1){
                         st.setText("正确");
                         i++;
+                        num++;
                     }
                     else if (h[i][4]==0){
                         st.setText("错误");
@@ -160,7 +163,7 @@ public class xFrame extends JFrame {
                     }
                 }
                 //计算用户做题的正确率
-                result = ((num*1.0)/(list.size())*100);
+                result = ((num*1.0)/(list1.size())*100);
                 CountLable.setText(result + "%");
             }
         });

@@ -11,7 +11,7 @@ public class equation {
         }
         else {
             a[1]=(int)(Math.random()*101);
-            a[2]=(int)(Math.random()*(a[0]+1));
+            a[2]=(int)(Math.random()*(a[1]+1));
             return a;
         }
     }
