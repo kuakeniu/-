@@ -11,10 +11,12 @@ public class topic {
             e[i][0]=temp[0];                //0:+ or - , 1:a , 2:b , 3;answer  , 4:T or F
             e[i][1]=temp[1];
             e[i][2]=temp[2];
-            if(e[i][0]==1)
-                e[i][3]=temp[1]+temp[2];
-            else
+            if(e[i][0]==1) {
+                e[i][3] = temp[1] + temp[2];
+            }
+            else{
                 e[i][3]=temp[1]-temp[2];
+            }
         }
         return e;
     }

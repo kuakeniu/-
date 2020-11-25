@@ -7,12 +7,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
-
+                                                        //开始页面
 public class iFrame extends JFrame{
     JPanel ButtonPanel=new JPanel();
     JPanel TextPanel=new JPanel();
-    int n;
-    int s[][]=new int[n][5];
+    static int n;
+    static int s[][]=new int[n][5];
     public iFrame (){
         ButtonPanel.setLayout(new GridLayout(1,1));
         TextPanel.setLayout(new GridLayout(2,1));
@@ -22,7 +22,7 @@ public class iFrame extends JFrame{
         Container container=getContentPane();
         JLabel jLabel=new JLabel("请输入要生成的题目数量",JLabel.CENTER);
         jLabel.setPreferredSize(new Dimension(80,30));
-        jLabel.setFont(new Font("楷体", Font.BOLD, 20));
+        jLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         JButton jumpButton=new JButton("生成");
         jumpButton.setPreferredSize(new Dimension(80,30));
         JTextField jTextField=new JTextField();
@@ -33,14 +33,14 @@ public class iFrame extends JFrame{
         TextPanel.add(jTextField);
         container.add(TextPanel);
         container.add(ButtonPanel);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         jumpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 n=Integer.valueOf(jTextField.getText());
-                s= topic.generate(n);
                 setVisible(false);
-                xFrame jf=new xFrame(n,s);
+                xFrame jf=new xFrame(n);
             }
         });
     }
