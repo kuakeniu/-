@@ -3,7 +3,7 @@ package addsubcalculation;
 import java.util.List;
 
 public class calculation {
-    public static int[][] cal(int a[][], int n, int[] userlist) {
+    public static int[][] cal(int[][] a, int n, int[] userlist) {
         int i = 0;
         for (var ul : userlist) {
             if (ul == a[i][3]) {
