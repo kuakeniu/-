@@ -28,7 +28,7 @@ public class xFrame extends JFrame {                         //计算页面
     public int m = 0;
 
     // add
-    private int n;
+    private final int n;
     private int[][] a;
 
     public xFrame(int n) {
@@ -167,7 +167,7 @@ public class xFrame extends JFrame {                         //计算页面
                 for(int in=0;in<userlist.length;in++){//list1为用户输入计算结果的文本框集合
                     userlist[in] = Integer.parseInt(inputTF.get(in).getText());
                 }
-                int h[][];
+                int[][] h;
                 h= calculation.cal(a,n,userlist);
                 int i=0;
                 for(JLabel st: checkLabel){

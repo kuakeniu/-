@@ -12,7 +12,7 @@ public class iFrame extends JFrame{
     JPanel ButtonPanel=new JPanel();
     JPanel TextPanel=new JPanel();
     static int n;
-    static int s[][]=new int[n][5];
+    static int[][] s =new int[n][5];
     public iFrame (){
         ButtonPanel.setLayout(new GridLayout(1,1));
         TextPanel.setLayout(new GridLayout(2,1));
