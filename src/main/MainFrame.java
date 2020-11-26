@@ -1,6 +1,7 @@
 package main;
-import addsubcalculation.calculation;
-import producetopic.topic;
+import addsubcalculation.Calculations;
+import bean.Formula;
+import producetopic.Topices;
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-public class xFrame extends JFrame {                         //计算页面
+public class MainFrame extends JFrame {                         //计算页面
     public JPanel Countpanel;//创建计算面板
     public JPanel Buttonpanel;//创建按钮及结果面板
     public JButton Clearbutton;//创建清空按钮
@@ -29,12 +30,11 @@ public class xFrame extends JFrame {                         //计算页面
 
     // add
     private final int n;
-    private int[][] a;
+    private Formula[] a = null;
 
-    public xFrame(int n) {
+    public MainFrame(int n) {
         // add
         this.n = n;
-        this.a = new int[n][5];
         userlist = new int[n];
 
         Clearbutton = new JButton("重新生成题目");
@@ -106,15 +106,15 @@ public class xFrame extends JFrame {                         //计算页面
             }
     }
     public void Create(){
-        a = topic.generate(n);
+        a = Topices.generate(n);
         int i=0;
         for(JLabel jl: questionLabel){
-            if(a[i][0]==1){
-                jl.setText(a[i][1]+"+"+a[i][2]);
+            if(a[i].getOp()==1){
+                jl.setText(a[i].getA()+"+"+a[i].getB());
                 i++;
             }
             else {
-                jl.setText(a[i][1]+"-"+a[i][2]);
+                jl.setText(a[i].getA()+"-"+a[i].getB());
                 i++;
             }
         }
@@ -167,22 +167,21 @@ public class xFrame extends JFrame {                         //计算页面
                 for(int in=0;in<userlist.length;in++){//list1为用户输入计算结果的文本框集合
                     userlist[in] = Integer.parseInt(inputTF.get(in).getText());
                 }
-                int[][] h;
-                h= calculation.cal(a,n,userlist);
+                Formula[] h = Calculations.cal(a,n,userlist);
                 int i=0;
                 for(JLabel st: checkLabel){
-                    if(h[i][4]==1){
+                    if(h[i].isUserCheck()){
                         st.setText("正确");
                         i++;
                         num++;
                     }
-                    else if (h[i][4]==0){
+                    else {
                         st.setText("错误");
                         i++;
                     }
                 }
                 for(int p=0;p<n;p++){
-                    ansLabel.get(p).setText("答案:"+h[p][3]);
+                    ansLabel.get(p).setText("答案:"+h[p].getAns());
                 }
                 //计算用户做题的正确率
                 result = ((num*1.0)/(inputTF.size())*100);

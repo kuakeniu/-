@@ -1,19 +1,17 @@
 package main;
 
-import producetopic.topic;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
-                                                        //开始页面
-public class iFrame extends JFrame{
+
+//开始页面
+public class StartFrame extends JFrame{
     JPanel ButtonPanel=new JPanel();
     JPanel TextPanel=new JPanel();
     static int n;
     static int[][] s =new int[n][5];
-    public iFrame (){
+    public StartFrame(){
         ButtonPanel.setLayout(new GridLayout(1,1));
         TextPanel.setLayout(new GridLayout(2,1));
         setLayout(new GridLayout(2,1,20,80));
@@ -38,9 +36,9 @@ public class iFrame extends JFrame{
         jumpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                n=Integer.valueOf(jTextField.getText());
+                n=Integer.parseInt(jTextField.getText());
                 setVisible(false);
-                xFrame jf=new xFrame(n);
+                MainFrame jf=new MainFrame(n);
             }
         });
     }
