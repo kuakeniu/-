@@ -1,7 +1,7 @@
 package main;
-import addsubcalculation.Calculations;
+import addsubcalculation.CheckAns;
 import bean.Formula;
-import producetopic.Topices;
+import producetopic.Exercise;
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -30,11 +30,12 @@ public class MainFrame extends JFrame {                         //计算页面
 
     // add
     private final int n;
-    private Formula[] a = null;
+    private int addPercentage;
 
-    public MainFrame(int n) {
+    public MainFrame(int n,int addPercentage) {
         // add
         this.n = n;
+        this.addPercentage=addPercentage;
         userlist = new int[n];
 
         Clearbutton = new JButton("重新生成题目");
@@ -106,15 +107,15 @@ public class MainFrame extends JFrame {                         //计算页面
             }
     }
     public void Create(){
-        a = Topices.generate(n);
+        Exercise.generate(n,addPercentage);
         int i=0;
         for(JLabel jl: questionLabel){
-            if(a[i].getOp()==1){
-                jl.setText(a[i].getA()+"+"+a[i].getB());
+            if(Exercise.e[i].getOp()==1){
+                jl.setText(Exercise.e[i].getA()+"+"+Exercise.e[i].getB());
                 i++;
             }
             else {
-                jl.setText(a[i].getA()+"-"+a[i].getB());
+                jl.setText(Exercise.e[i].getA()+"-"+Exercise.e[i].getB());
                 i++;
             }
         }
@@ -124,8 +125,8 @@ public class MainFrame extends JFrame {                         //计算页面
         Clearbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                for(JLabel clearlable: questionLabel){
-                    clearlable.setText("");
+                for(JLabel clearLable: questionLabel){
+                    clearLable.setText("");
                 }
                 for(JTextField cleartextField : inputTF){
                     cleartextField.setText("");
@@ -167,7 +168,7 @@ public class MainFrame extends JFrame {                         //计算页面
                 for(int in=0;in<userlist.length;in++){//list1为用户输入计算结果的文本框集合
                     userlist[in] = Integer.parseInt(inputTF.get(in).getText());
                 }
-                Formula[] h = Calculations.cal(a,n,userlist);
+                Formula[] h = CheckAns.cal(Exercise.e,n,userlist);
                 int i=0;
                 for(JLabel st: checkLabel){
                     if(h[i].isUserCheck()){
