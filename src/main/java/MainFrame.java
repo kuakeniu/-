@@ -1,4 +1,3 @@
-package main;
 import addsubcalculation.CheckAns;
 import bean.Formula;
 import producetopic.Exercise;
