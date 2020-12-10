@@ -1,12 +1,12 @@
-package producetopic;
+package factory;
 
 import bean.Formula;
-import produceequation.Equations;
+import factory.EquationsFactory;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class Exercise {
+public class ExerciseFactory {
     public static Formula[] e;
     public static void generate(int n,int addPercentage){
         e = new Formula[n];
@@ -14,7 +14,7 @@ public class Exercise {
         for(int i=0;i<n;i++){
             Formula temp;
             do {
-                temp= Equations.getRandom(addPercentage);
+                temp= EquationsFactory.getRandom(addPercentage);
             } while (!set.add(temp));
 
             if(temp.getOp() ==1) {

@@ -1,8 +1,8 @@
-package produceequation;
+package factory;
 
 import bean.Formula;
 
-public class Equations {
+public class EquationsFactory {
     public static Formula getRandom(int addPercentage){
         int a, b, op,isAddorSub;
         isAddorSub=(int)(Math.random()*(101));

@@ -1,6 +1,6 @@
-import addsubcalculation.CheckAns;
+import check.CheckAns;
 import bean.Formula;
-import producetopic.Exercise;
+import factory.ExerciseFactory;
 
 import java.util.ArrayList;
 import javax.swing.*;
@@ -106,15 +106,15 @@ public class MainFrame extends JFrame {                         //计算页面
             }
     }
     public void Create(){
-        Exercise.generate(n,addPercentage);
+        ExerciseFactory.generate(n,addPercentage);
         int i=0;
         for(JLabel jl: questionLabel){
-            if(Exercise.e[i].getOp()==1){
-                jl.setText(Exercise.e[i].getA()+"+"+Exercise.e[i].getB());
+            if(ExerciseFactory.e[i].getOp()==1){
+                jl.setText(ExerciseFactory.e[i].getA()+"+"+ ExerciseFactory.e[i].getB());
                 i++;
             }
             else {
-                jl.setText(Exercise.e[i].getA()+"-"+Exercise.e[i].getB());
+                jl.setText(ExerciseFactory.e[i].getA()+"-"+ ExerciseFactory.e[i].getB());
                 i++;
             }
         }
@@ -167,7 +167,7 @@ public class MainFrame extends JFrame {                         //计算页面
                 for(int in=0;in<userlist.length;in++){//list1为用户输入计算结果的文本框集合
                     userlist[in] = Integer.parseInt(inputTF.get(in).getText());
                 }
-                Formula[] h = CheckAns.cal(Exercise.e,n,userlist);
+                Formula[] h = CheckAns.cal(ExerciseFactory.e,n,userlist);
                 int i=0;
                 for(JLabel st: checkLabel){
                     if(h[i].isUserCheck()){

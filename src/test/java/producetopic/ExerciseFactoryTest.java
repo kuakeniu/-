@@ -1,17 +1,16 @@
 package producetopic;
 
+import factory.ExerciseFactory;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class ExerciseTest {
+public class ExerciseFactoryTest {
     @Before
     public void setUp() throws Exception {
     }
 
     @Test
     public void generate() {
-        Exercise.generate(4,40);
+        ExerciseFactory.generate(4,40);
     }
 }

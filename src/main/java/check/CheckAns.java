@@ -1,8 +1,6 @@
-package addsubcalculation;
+package check;
 
 import bean.Formula;
-
-import java.util.List;
 
 public class CheckAns {
     public static Formula[] cal(Formula[] a, int n, int[] userlist) {
