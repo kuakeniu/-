@@ -12,7 +12,7 @@ public class Formula {
     private boolean userCheck;
     //答案
     private int ans;
-
+    private int userAns;
     public Formula(int op, int a, int b) {
         setOp(op);
         this.a = a;
@@ -33,6 +33,14 @@ public class Formula {
         } else {
             this.op = '-';
         }
+    }
+
+    public int getUserAns(){
+        return userAns;
+    }
+
+    public void setUserAns(int userAns) {
+        this.userAns = userAns;
     }
 
     public int getA() {
